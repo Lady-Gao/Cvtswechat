@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="card">
+    <p class="card">ee
       {{text}}
     </p>
   </div>
@@ -8,7 +8,10 @@
 
 <script>
 export default {
-  props: ['text']
+  props: ['text'],
+  mounted () {
+    console.log(this.test)
+  }
 }
 </script>
 
