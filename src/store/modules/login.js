@@ -1,15 +1,14 @@
 export default {
   state:{
-      a:1
   },
   mutations:{
-    ADD(state) {
-       state.a = 3
+    SETUSER(state,params) {
+       wx.setStorageSync('userInfo', params)
     }
   },
   actions:{
     add({commit},param){
-        commit('ADD')
+        
     }
   },
   getters:{

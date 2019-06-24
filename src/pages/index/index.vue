@@ -45,30 +45,24 @@ export default{
     }
   },
   created () {
-   setTimeout(() => {
-     this.$store.dispatch('add').then(()=>{
-       console.log(this.$store.getters.a)
-     })
-   }, 1000);
+  
+    
   },
   methods: {
     /**
      * 登陆请求数据
      */
     login() {
-     this.$fly.get(this.$COMMON.baseUrl+'/login?enterpriseCode='+this.enterpriseCode+'&account='+this.name+'&password='+this.passWord+'&language='+this.language)
+     this.$fly.get(this.$config.baseUrl+'/login?enterpriseCode='+this.enterpriseCode+'&account='+this.name+'&password='+this.passWord+'&language='+this.language)
      .then(res=>{
-       console.log(res.data)
+       const {flag,data}=res.data
+       if(flag){
+
+         this.$store.commit('SETUSER',data)
+         console.log( this.$COMMON)
+         this.$router.push({path:"/pages/monitorPlatform/multiCar/main"})
+       }
       })
-    },
-    /**
-     * 路由跳转
-     */
-    routerGo(url){
-      this.$router.push({
-        path:url
-      })
-      
     },
     onchangeEnterpriseCode(val){
       this.enterpriseCode=val.mp.detail
