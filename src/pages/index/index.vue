@@ -11,7 +11,7 @@
         <van-field
           left-icon="contact"
           label='用户名'
-          v-model="name"
+          v-model="name" 
           placeholder="请输入用户名"
           @change='onchangeName'
         />
