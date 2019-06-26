@@ -4,6 +4,7 @@ export default {
   mutations:{
     SETUSER(state,params) {
        wx.setStorageSync('userInfo', params)
+       wx.setStorageSync('token', params.token)
     }
   },
   actions:{

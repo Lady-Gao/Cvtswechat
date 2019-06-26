@@ -23,14 +23,8 @@
           placeholder="请输入用户密码"
           @change='onchangePassWord'
         />
-        <span @click="login">Login</span>
+        <van-button plain type="primary" @click="login">Login</van-button>
     </div>
-    <!-- bottom tab -->
-    <van-goods-action>
-  <van-goods-action-icon icon="chat-o" text="home" />
-  <van-goods-action-icon icon="cart-o" text="jk"  />
-  <van-goods-action-icon icon="cart-o" text="gl"  />
-</van-goods-action>
   </div>
 </template>
 
@@ -38,14 +32,20 @@
 export default{
   data(){
     return {
-       enterpriseCode: "111111111",
+       enterpriseCode: "11111111",
         name: "admin",
-        passWord: "18f4f4d01f8ec4393a12e25521980cb26ad0484783ec6fdc431cc51a8aed71e5385bd22e691736cc504df19a10e6296487d6bd0f2be9e4215a910690162530b8",
+        // passWord: "18f4f4d01f8ec4393a12e25521980cb26ad0484783ec6fdc431cc51a8aed71e5385bd22e691736cc504df19a10e6296487d6bd0f2be9e4215a910690162530b8",
+        passWord:'de6976852ac3933f61b8e1e66e796f6c2c7ca8ddc4e6d37b594dc8ecbc3ad5d7a636a80c416f1333bcfd6090d66eb53909b3e27b1c9a2ae110df22ad21ee6e8e',
         language:'zh_CN'
     }
   },
-  created () {
-  
+  mounted() {
+    /**
+     * 如果已经登陆直接跳转页面
+     */
+    if(wx.getStorageSync('userInfo')){
+      this.$router.push({path:"/pages/monitorPlatform/multiCar/main"})
+    }
     
   },
   methods: {
@@ -53,13 +53,14 @@ export default{
      * 登陆请求数据
      */
     login() {
-     this.$fly.get(this.$config.baseUrl+'/login?enterpriseCode='+this.enterpriseCode+'&account='+this.name+'&password='+this.passWord+'&language='+this.language)
+     this.$http({
+       url:'/login?enterpriseCode='+this.enterpriseCode+'&account='+this.name+'&password='+this.passWord+'&language='+this.language,
+       method:'get'
+     })
      .then(res=>{
        const {flag,data}=res.data
        if(flag){
-
          this.$store.commit('SETUSER',data)
-         console.log( this.$COMMON)
          this.$router.push({path:"/pages/monitorPlatform/multiCar/main"})
        }
       })
@@ -73,11 +74,6 @@ export default{
     onchangePassWord(val){
       this.passWord=val.mp.detail
     },
-  },
-  mounted(){
-
-  },
-  watch: {
   }
 }
 </script>
