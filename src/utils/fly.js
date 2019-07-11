@@ -48,9 +48,15 @@ fly.interceptors.response.use(
   )
 
 var http = function (data) {
+  let url =''
+  if(data.url){
+    url=config.baseUrl + data.url
+  }else{
+    url=data
+  }
     return fly.request({
       ...data,
-      url: config.baseUrl + data.url,
+      url,
     })
 
 }

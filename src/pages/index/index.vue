@@ -60,7 +60,9 @@ export default{
      .then(res=>{
        const {flag,data}=res.data
        if(flag){
+         //存储用户信息
          this.$store.commit('SETUSER',data)
+         //页面跳转
          this.$router.push({path:"/pages/monitorPlatform/multiCar/main"})
        }
       })

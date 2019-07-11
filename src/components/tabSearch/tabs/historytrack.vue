@@ -27,12 +27,11 @@
               this.$store.dispatch('findDailyMileage',this.data).then(res=>{
                   console.log(this.$store.getters.listAll,'list')
                   this.distribution()
-                 
-                 
-              
-                  
-              })
-          
+                })
+            // this.$http('http://api.map.baidu.com/api?v=2.0&ak=8GrVRotzGKj3xzIRu07hCzx2'  
+            //  ).then(res=>{
+            //      console.log(res.data)
+            //     })
         },
         computed: {
             listAll(){

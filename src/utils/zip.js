@@ -72,11 +72,11 @@ export default {
     // 解压
     unzip(b64Data) {
     const arrayBuffer = new Uint8Array(b64Data)
-    // let pakodata = pako.inflate(arrayBuffer)
+    let pakodata = pako.inflate(arrayBuffer)
     // let strpakodata = byteToString(pakodata)
     // return strpakodata;
-    let decompress = pako.ungzip(arrayBuffer);
-    let str = Utf8ArrayToStr(decompress);
+    // let decompress = pako.ungzip(arrayBuffer);
+    let str = Utf8ArrayToStr(pakodata);
     return str;
     }
   }

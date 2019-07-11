@@ -2,8 +2,15 @@
   "pages": [
     "pages/index/main",
     "pages/monitorPlatform/multiCar/main",
-    "pages/logs/main"
+    "pages/userInfo/main",
+    "pages/logs/main",
+    "pages/forensicCamera/main"
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
@@ -22,7 +29,10 @@
        "van-tab": "/static/vant/tab/index",
        "van-tabs": "/static/vant/tabs/index",
        "van-picker": "/static/vant/picker/index",
-       "van-datetime-picker": "/static/vant/datetime-picker/index"
+       "van-datetime-picker": "/static/vant/datetime-picker/index",
+        "van-icon": "/static/vant/icon/index",
+          "van-row": "/static/vant/row/index",
+          "van-col": "/static/vant/col/index"
   }
  
 }
